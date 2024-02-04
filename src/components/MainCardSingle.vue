@@ -1,8 +1,22 @@
 <script setup>
 import { faker } from '@faker-js/faker'
 const fullname = faker.person.fullName()
+const firstname = faker.person.firstName()
+const lastname = faker.person.lastName()
+const job_title = faker.person.jobTitle()
+const bio = faker.lorem.lines(2)
+const username = faker.internet.userName({firstName: firstname, lastName: lastname}).toLowerCase()
+
 </script>
 
 <template>
-    {{ fullname }} <br />
+    <!-- {{ fullname }} <br /> -->
+    <div class="border border-green-400 rounded-lg shadow bg-red-500 h-full">
+        <img :src="faker.image.urlLoremFlickr({category: 'selfie'})" />
+        <div class="p-7">
+            <p class="mb-2 text-3xl font-serif">{{ fullname }}</p>
+            <p class="mb-3 font-sans text-blue-800">{{ job_title }}</p>
+            <p class="mb-3 font-sans text-blue-800">{{ bio }}</p>
+        </div>
+    </div>
 </template>
